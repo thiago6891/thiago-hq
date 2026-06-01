@@ -1,6 +1,13 @@
 ---
-import { contactLinks, proofPoints, strengths } from '../lib/site-content';
+import {
+	contactLinks,
+	emailAddress,
+	problemRecognition,
+	whatIBring,
+} from '../lib/site-content';
 import '../styles/global.css';
+
+const contactEntries = Object.entries(contactLinks);
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -12,46 +19,57 @@ import '../styles/global.css';
 		<meta name="generator" content={Astro.generator} />
 		<meta
 			name="description"
-			content="Thiago is a Senior Backend Engineer focused on backend systems, infrastructure, migrations, and technical planning."
+			content="I help remote teams turn ambiguous technical work into clear plans, maintainable systems, and shipped software."
 		/>
-		<title>Thiago | Senior Backend Engineer</title>
+		<title>Thiago Cordeiro | Software Engineer</title>
 	</head>
 	<body class="bg-paper text-ink antialiased">
-		<main class="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-8 sm:px-10 lg:px-12">
-			<header class="flex items-center justify-between border-b border-line pb-5">
-				<a class="text-base font-semibold tracking-[0.08em] uppercase" href="/">Thiago</a>
-				<nav aria-label="Primary navigation" class="hidden items-center gap-7 text-sm text-muted sm:flex">
-					<a class="transition hover:text-ink" href="#work">What I do</a>
-					<a class="transition hover:text-ink" href="#judgment">Judgment</a>
-					<a class="transition hover:text-ink" href="#contact">Contact</a>
+		<main class="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-6 sm:px-8 lg:px-12">
+			<header class="flex items-center justify-between gap-3 border-b border-line pb-5">
+				<a class="shrink-0 text-base font-semibold tracking-[0.08em] uppercase" href="/">Thiago Cordeiro</a>
+				<nav aria-label="Contact links" class="flex shrink-0 flex-nowrap justify-end gap-x-1 text-sm text-muted">
+					{
+						contactEntries.map(([label, link]) => {
+							return (
+								<a
+									class="inline-flex size-7 items-center justify-center rounded-full transition hover:bg-white/70 hover:text-ink focus:outline-2 focus:outline-offset-2 focus:outline-accent sm:size-9"
+									href={link.href}
+									target={link.opensInNewTab ? '_blank' : undefined}
+									rel={link.opensInNewTab ? 'noreferrer' : undefined}
+									aria-label={label}
+									title={label}
+								>
+									<link.icon />
+								</a>
+							);
+						})
+					}
 				</nav>
 			</header>
 
-			<section class="grid flex-1 items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1fr_340px] lg:py-24">
+			<section class="grid items-center gap-10 py-14 sm:py-18 lg:grid-cols-[minmax(0,1fr)_280px] lg:py-20">
 				<div class="max-w-3xl">
-					<p class="mb-5 text-sm font-semibold tracking-[0.18em] text-accent uppercase">Senior Backend Engineer</p>
-					<h1 class="max-w-4xl text-5xl leading-[1.03] font-semibold text-balance sm:text-6xl lg:text-7xl">
-						Backend systems, infrastructure, and migrations built with judgment.
+					<h1 class="max-w-4xl text-4xl leading-[1.05] font-semibold text-balance sm:text-6xl lg:text-7xl">
+						Software engineer focused on clarity, ownership, and reliable delivery.
 					</h1>
 					<p class="mt-7 max-w-2xl text-lg leading-8 text-muted sm:text-xl">
-						I help teams turn complex technical work into reliable systems, clear plans, and production outcomes that hold up over time.
+						I help remote teams turn ambiguous technical work into clear plans, maintainable systems, and shipped software.
 					</p>
-					<div class="mt-9 flex flex-wrap gap-3" aria-label="Contact and social links">
-						{
-							contactLinks.map((link) => (
-								<a
-									class="rounded-full border border-line bg-white/55 px-5 py-3 text-sm font-medium text-ink transition hover:border-accent hover:text-accent focus:outline-2 focus:outline-offset-2 focus:outline-accent"
-									href={link.href}
-								>
-									{link.label}
-								</a>
-							))
-						}
+					<p class="mt-5 max-w-2xl leading-7 text-muted">
+						When requirements are unclear, mental models differ, ownership is missing, documentation is stale, and small changes take too long, I help teams make the work understandable enough to move forward.
+					</p>
+					<div class="mt-9 flex flex-wrap gap-3" aria-label="Primary actions">
+						<a
+							class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent focus:outline-2 focus:outline-offset-2 focus:outline-accent"
+							href="#contact"
+						>
+							Contact me
+						</a>
 					</div>
 				</div>
 
 				<aside class="w-full max-w-sm justify-self-start lg:justify-self-end" aria-label="Portrait of Thiago">
-					<div class="size-72 overflow-hidden rounded-full border border-line bg-[#ebe7dd] p-3 shadow-sm sm:size-80">
+					<div class="size-64 overflow-hidden rounded-full border border-line bg-[#ebe7dd] p-3 shadow-sm sm:size-72">
 						<img
 							class="h-full w-full rounded-full object-cover"
 							src="/portrait.jpeg"
@@ -63,16 +81,16 @@ import '../styles/global.css';
 				</aside>
 			</section>
 
-			<section id="work" class="border-t border-line py-14 sm:py-16">
-				<div class="grid gap-9 lg:grid-cols-[240px_1fr]">
+			<section id="problem" class="border-t border-line py-14 sm:py-16">
+				<div class="grid gap-9 lg:grid-cols-[260px_1fr]">
 					<div>
-						<p class="text-sm font-semibold tracking-[0.18em] text-accent uppercase">What I do</p>
-						<h2 class="mt-3 text-3xl font-semibold">Focused senior backend work.</h2>
+						<p class="text-sm font-semibold tracking-[0.18em] text-accent uppercase">Problem recognition</p>
+						<h2 class="mt-3 max-w-sm text-3xl font-semibold">The hard part is often making the work clear.</h2>
 					</div>
 					<div class="grid gap-4 sm:grid-cols-2">
 						{
-							strengths.map((item) => (
-								<article class="rounded-lg border border-line bg-white/45 p-6">
+							problemRecognition.map((item) => (
+								<article class="border-t border-line py-5">
 									<h3 class="text-lg font-semibold">{item.title}</h3>
 									<p class="mt-3 leading-7 text-muted">{item.text}</p>
 								</article>
@@ -82,19 +100,19 @@ import '../styles/global.css';
 				</div>
 			</section>
 
-			<section id="judgment" class="border-t border-line py-14 sm:py-16">
+			<section id="what-i-bring" class="border-t border-line py-14 sm:py-16">
 				<div class="grid gap-9 lg:grid-cols-[240px_1fr]">
 					<div>
-						<p class="text-sm font-semibold tracking-[0.18em] text-accent uppercase">Proof of judgment</p>
-						<h2 class="mt-3 text-3xl font-semibold">Problem types handled.</h2>
+						<p class="text-sm font-semibold tracking-[0.18em] text-accent uppercase">What I bring</p>
+						<h2 class="mt-3 text-3xl font-semibold">Practical judgment from plan to production.</h2>
 					</div>
-					<div class="divide-y divide-line border-y border-line">
+					<div class="grid gap-4 sm:grid-cols-2">
 						{
-							proofPoints.map((point) => (
-								<div class="grid gap-4 py-6 sm:grid-cols-[32px_1fr]">
-									<span class="mt-1 size-2 rounded-full bg-accent" aria-hidden="true" />
-									<p class="max-w-3xl text-lg leading-8 text-ink">{point}</p>
-								</div>
+							whatIBring.map((item) => (
+								<article class="rounded-lg border border-line bg-white/50 p-6">
+									<h3 class="text-lg font-semibold">{item.title}</h3>
+									<p class="mt-3 leading-7 text-muted">{item.text}</p>
+								</article>
 							))
 						}
 					</div>
@@ -105,17 +123,31 @@ import '../styles/global.css';
 				<div class="grid gap-8 rounded-lg border border-line bg-[#eeece5] p-7 sm:p-9 lg:grid-cols-[1fr_auto] lg:items-end">
 					<div>
 						<p class="text-sm font-semibold tracking-[0.18em] text-accent uppercase">Contact</p>
-						<h2 class="mt-3 text-3xl font-semibold">Available for senior backend, infrastructure, and consulting work.</h2>
+						<h2 class="mt-3 max-w-2xl text-3xl font-semibold">Need help turning unclear technical work into shipped software?</h2>
 						<p class="mt-4 max-w-2xl leading-7 text-muted">
-							The fastest way to reach me is email. Social links are placeholders in this first version and should be replaced before launch.
+							Just say <a class="font-semibold text-ink transition hover:text-accent" href={`mailto:${emailAddress}`}>{emailAddress}</a>
 						</p>
+						<div class="mt-6 flex flex-wrap gap-2 text-sm text-muted" aria-label="Additional links">
+							{
+								contactEntries
+									.filter(([label]) => label !== 'Email')
+									.map(([label, link]) => {
+										return (
+											<a
+												class="inline-flex size-8 items-center justify-center rounded-full transition hover:bg-white/70 hover:text-ink focus:outline-2 focus:outline-offset-2 focus:outline-accent sm:size-9"
+												href={link.href}
+												target={link.opensInNewTab ? '_blank' : undefined}
+												rel={link.opensInNewTab ? 'noreferrer' : undefined}
+												aria-label={label}
+												title={label}
+											>
+												<link.icon />
+											</a>
+										);
+									})
+							}
+						</div>
 					</div>
-					<a
-						class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent focus:outline-2 focus:outline-offset-2 focus:outline-accent"
-						href="mailto:thiago6891@gmail.com"
-					>
-						thiago6891@gmail.com
-					</a>
 				</div>
 			</section>
 		</main>
