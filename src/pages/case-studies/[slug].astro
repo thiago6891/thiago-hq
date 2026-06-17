@@ -1,0 +1,98 @@
+---
+import { getCollection, render } from 'astro:content';
+import ContactBlock from '../../components/ContactBlock.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+	const caseStudies = await getCollection('case-studies');
+
+	return caseStudies.map((entry) => ({
+		params: { slug: entry.id },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { summary, title } = entry.data;
+---
+
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={summary} />
+		<title>{title} | Thiago Cordeiro</title>
+	</head>
+	<body class="bg-paper text-ink antialiased">
+		<main class="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-6 sm:px-8 lg:px-12">
+			<SiteHeader />
+
+			<article class="mx-auto w-full max-w-180 py-14 sm:py-16">
+				<header class="border-b border-line pb-8">
+					<h1 class="text-4xl leading-[1.08] font-semibold text-balance sm:text-5xl text-center">{title}</h1>
+					<p class="mt-5 text-lg leading-8 text-muted sm:text-xl text-justify">{summary}</p>
+				</header>
+
+				<div class="case-study-body mt-10">
+					<Content />
+				</div>
+			</article>
+
+			<section id="contact" class="w-full border-t border-line py-14 sm:py-16">
+				<ContactBlock />
+			</section>
+		</main>
+	</body>
+</html>
+
+<style>
+	.case-study-body {
+		color: var(--color-ink);
+		font-size: 1rem;
+		line-height: 1.75;
+		text-align: justify;
+	}
+
+	.case-study-body :global(p),
+	.case-study-body :global(ol),
+	.case-study-body :global(ul) {
+		margin-top: 1.25rem;
+	}
+
+	.case-study-body :global(h2),
+	.case-study-body :global(h3) {
+		margin-top: 2.5rem;
+		font-weight: 650;
+		line-height: 1.2;
+	}
+
+	.case-study-body :global(h2) {
+		font-size: 1.75rem;
+	}
+
+	.case-study-body :global(h3) {
+		font-size: 1.35rem;
+	}
+
+	.case-study-body :global(ol),
+	.case-study-body :global(ul) {
+		padding-left: 1.5rem;
+	}
+
+	.case-study-body :global(ol) {
+		list-style: decimal;
+	}
+
+	.case-study-body :global(ul) {
+		list-style: disc;
+	}
+
+	.case-study-body :global(li + li) {
+		margin-top: 0.5rem;
+	}
+</style>
