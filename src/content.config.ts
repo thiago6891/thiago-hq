@@ -6,6 +6,8 @@ const caseStudies = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		summary: z.string(),
+		coverImage: z.string().optional(),
+		coverImageAlt: z.string().optional(),
 	}),
 });
 

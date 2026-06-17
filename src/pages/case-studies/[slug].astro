@@ -15,7 +15,10 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { summary, title } = entry.data;
+const { coverImage, coverImageAlt, summary, title } = entry.data;
+const siteUrl = Astro.site ?? Astro.url.origin;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const coverImageUrl = coverImage ? new URL(coverImage, siteUrl) : undefined;
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -26,6 +29,14 @@ const { summary, title } = entry.data;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={summary} />
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={summary} />
+		<meta property="og:url" content={canonicalUrl} />
+		{coverImageUrl && <meta property="og:image" content={coverImageUrl} />}
+		{coverImageAlt && <meta property="og:image:alt" content={coverImageAlt} />}
+		<meta name="twitter:card" content={coverImageUrl ? 'summary_large_image' : 'summary'} />
+		{coverImageUrl && <meta name="twitter:image" content={coverImageUrl} />}
 		<title>{title} | Thiago Cordeiro</title>
 	</head>
 	<body class="bg-paper text-ink antialiased">
@@ -37,6 +48,12 @@ const { summary, title } = entry.data;
 					<h1 class="text-4xl leading-[1.08] font-semibold text-balance sm:text-5xl text-center">{title}</h1>
 					<p class="mt-5 text-lg leading-8 text-muted sm:text-xl text-justify">{summary}</p>
 				</header>
+
+				{
+					coverImage && (
+						<img class="case-study-cover" src={coverImage} alt={coverImageAlt ?? ''} />
+					)
+				}
 
 				<div class="case-study-body mt-10">
 					<Content />
@@ -94,5 +111,12 @@ const { summary, title } = entry.data;
 
 	.case-study-body :global(li + li) {
 		margin-top: 0.5rem;
+	}
+
+	.case-study-cover {
+		display: block;
+		margin-top: 2rem;
+		width: 100%;
+		border-radius: 8px;
 	}
 </style>

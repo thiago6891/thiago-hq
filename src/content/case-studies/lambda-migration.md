@@ -1,6 +1,8 @@
 ---
 title: Migrating 30+ AWS Lambda endpoints to a Node.js Backend Without Freezing Development
 summary: How I migrated a Lambda-composed backend into a NestJS application while keeping feature work moving and improving the team's day-to-day development speed.
+coverImage: /images/case-studies/lambda-migration/thumbnail.png
+coverImageAlt: Lambda migration architecture
 ---
 
 At the time, our backend was fragmented across *30+ Lambda functions*. That worked well enough when the team had two or three engineers, but as we grew to eight, it became a bottleneck.
