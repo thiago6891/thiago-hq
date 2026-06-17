@@ -1,9 +1,7 @@
 import EmailIcon from '../components/icons/EmailIcon.astro';
-import GitHubIcon from '../components/icons/GitHubIcon.astro';
 import LinkedInIcon from '../components/icons/LinkedInIcon.astro';
-import XIcon from '../components/icons/XIcon.astro';
 
-type ContactLabel = 'Email' | 'LinkedIn' | 'GitHub' | 'X';
+type ContactLabel = 'Email' | 'LinkedIn';
 
 type ContactLink = {
 	href: string;
@@ -25,8 +23,6 @@ export const contactLinks: Record<ContactLabel, ContactLink> = {
 		icon: LinkedInIcon,
 		opensInNewTab: true,
 	},
-	GitHub: { href: 'https://github.com/thiago6891', icon: GitHubIcon, opensInNewTab: true },
-	X: { href: 'https://x.com/tcordeiro68', icon: XIcon, opensInNewTab: true },
 };
 
 export const problemRecognition = [
