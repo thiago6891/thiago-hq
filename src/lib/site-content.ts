@@ -9,11 +9,6 @@ type ContactLink = {
 	opensInNewTab?: boolean;
 };
 
-type ContentCard = {
-	title: string;
-	text: string;
-};
-
 export const emailAddress = 'hi@thiagohq.com';
 
 export const contactLinks: Record<ContactLabel, ContactLink> = {
@@ -25,40 +20,32 @@ export const contactLinks: Record<ContactLabel, ContactLink> = {
 	},
 };
 
-export const problemRecognition = [
+export const selectedResults = [
 	{
-		title: 'Requirements are unclear',
-		text: 'The work starts with different assumptions, different mental models, and no shared picture of what the system needs to do.',
+		metric: '30+ endpoints',
+		description: 'Migrated from AWS Lambda into a Node.js backend while feature development continued.',
 	},
 	{
-		title: 'Ownership is hard to see',
-		text: 'Nobody is quite sure who owns the decision, the service, the rollout, or the follow-through when production behavior changes.',
+		metric: '50%+ lower',
+		description: 'AWS costs, saving thousands of dollars per month.',
 	},
 	{
-		title: 'Documentation falls behind',
-		text: 'The useful context lives across chats, tickets, memory, and scattered notes, so each new change starts with reconstruction.',
+		metric: '15 → 569 tests',
+		description: 'Expanded unit and integration test coverage over seven months.',
 	},
 	{
-		title: 'Small changes take too long',
-		text: 'Simple requests become slow because the system is coupled, the risks are implicit, and the path to shipping is unclear.',
+		metric: '50× and 30×',
+		description: 'Improved a hot path and a database operation respectively.',
 	},
-] satisfies ContentCard[];
+	{
+		metric: '~50% of revenue',
+		description: 'Led development of an API in a distributed payments system responsible for nearly half of company revenue.',
+	},
+];
 
-export const whatIBring = [
-	{
-		title: 'Clear plans from ambiguous work',
-		text: 'I turn loose technical problems into concrete scopes, tradeoffs, risks, rollout paths, and written decisions that remote teams can act on.',
-	},
-	{
-		title: 'Ownership through delivery',
-		text: 'I stay close to the implementation details, the communication, and the operational follow-through needed to get work shipped reliably.',
-	},
-	{
-		title: 'Technical judgment in existing systems',
-		text: 'I work with the system that is already running, choosing changes that respect production risk, team capacity, and long-term maintenance.',
-	},
-	{
-		title: 'Backend and infrastructure depth',
-		text: 'I bring practical experience with APIs, service boundaries, data flows, migrations, deployment paths, observability, and reliability work.',
-	},
-] satisfies ContentCard[];
+export const expertise = [
+	{ label: 'Backend', items: 'TypeScript, Node.js, Hono, NestJS, Express, REST APIs, event-driven systems' },
+	{ label: 'Data', items: 'PostgreSQL, SQLite, Prisma, Drizzle, MikroORM' },
+	{ label: 'Cloud', items: 'AWS, Cloudflare, Docker, infrastructure and cost optimization' },
+	{ label: 'Product', items: 'React, system design, technical planning, testing strategy, AI-assisted engineering' },
+];

@@ -24,3 +24,52 @@ body {
 	background: #b8ddd5;
 	color: var(--color-ink);
 }
+
+@layer components {
+	.section-label {
+		@apply text-sm font-semibold tracking-[0.18em] text-accent uppercase;
+	}
+
+	.button-primary {
+		@apply inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent focus:outline-2 focus:outline-offset-2 focus:outline-accent;
+	}
+
+	.button-secondary {
+		@apply inline-flex items-center justify-center rounded-full border border-line px-6 py-3 text-sm font-semibold transition hover:border-ink hover:bg-white/60 focus:outline-2 focus:outline-offset-2 focus:outline-accent;
+	}
+
+	.case-study-card {
+		@apply block rounded-lg focus:outline-2 focus:outline-offset-4 focus:outline-accent;
+	}
+}
+
+@media (min-width: 640px) {
+	.result-item:nth-child(odd) {
+		border-right: 1px solid var(--color-line);
+		padding-left: 0;
+	}
+
+	.result-item:nth-child(even) {
+		padding-right: 0;
+	}
+}
+
+@media (min-width: 1024px) {
+	.result-item:nth-child(n) {
+		padding-right: 1.5rem;
+		padding-left: 1.5rem;
+		border-right: 0;
+	}
+
+	.result-item:not(:nth-child(3n)) {
+		border-right: 1px solid var(--color-line);
+	}
+
+	.result-item:nth-child(3n + 1) {
+		padding-left: 0;
+	}
+
+	.result-item:nth-child(3n) {
+		padding-right: 0;
+	}
+}
