@@ -9,7 +9,7 @@ At the time, our backend was fragmented across *30+ Lambda functions*. That work
 
 Local testing was difficult to set up, so staging deployments were practically required just to validate changes. As a result, *we frequently stepped on each other's toes by pushing to staging and overwriting someone else's changes*.
 
-Ideally, we would consolidate the Lambda functions into a single backend application. However, it was not a priority for the CTO at the time. After a few conversations, I convinced him to let me take on the migration myself, with one important constraint: ***feature development could not be frozen***.
+Ideally, we would consolidate the Lambda functions into a single backend application. However, it was not a priority for the company at the time. After a few conversations with the CTO, I convinced him to let me take on the migration myself, with one important constraint: ***feature development could not be frozen***.
 
 I owned the project from planning through execution. The basic idea was to set up a Node.js backend application running on EKS and have the existing API Gateway route traffic to it instead of the Lambda functions.
 
