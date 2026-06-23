@@ -1,0 +1,57 @@
+---
+import ContactBlock from '../components/ContactBlock.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import '../styles/global.css';
+---
+
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="robots" content="noindex" />
+		<meta name="description" content="Assessment result links." />
+		<title>Assessment Results</title>
+	</head>
+	<body class="bg-paper text-ink antialiased">
+		<main class="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-6 sm:px-8 lg:px-12">
+			<SiteHeader />
+
+			<section class="mx-auto flex w-full max-w-180 flex-1 items-center py-14 sm:py-16" aria-label="Remotely.Works assessment results">
+				<div>
+					<p class="section-label">Remotely.Works</p>
+					<h1 class="mt-3 text-4xl leading-[1.08] font-semibold text-balance sm:text-5xl">
+						Assessment results
+					</h1>
+					<ul class="mt-8 space-y-4 text-lg font-semibold">
+						<li>
+							<a
+								class="text-accent underline decoration-line decoration-2 underline-offset-4 transition hover:text-ink focus:outline-2 focus:outline-offset-4 focus:outline-accent"
+								href="https://coderbyte.com/report/useraok1iy796:backend-developer-zddww1ue95"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Backend
+							</a>
+						</li>
+						<li>
+							<a
+								class="text-accent underline decoration-line decoration-2 underline-offset-4 transition hover:text-ink focus:outline-2 focus:outline-offset-4 focus:outline-accent"
+								href="https://coderbyte.com/report/user6nv6g45pf:fullstack-developer-s9f8sefyzg"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Fullstack
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="contact" class="w-full border-t border-line py-14 sm:py-16">
+				<ContactBlock />
+			</section>
+		</main>
+	</body>
+</html>
